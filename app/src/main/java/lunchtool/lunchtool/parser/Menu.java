@@ -15,14 +15,14 @@ public class Menu {
         return meals;
     }
 
-    void addMeal(final Meal meal)
+    public void addMeal(final Meal meal)
     {
         meals.add(meal);
     }
 
     @Override
     public final String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for( final Meal meal : meals) {
             sb.append(meal.toString());

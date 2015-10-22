@@ -1,7 +1,12 @@
-package lunchtool.lunchtool.parser;
+package lunchtool.lunchtool.test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import lunchtool.lunchtool.parser.Meal;
+import lunchtool.lunchtool.parser.Menu;
+import lunchtool.lunchtool.parser.Parser;
+import lunchtool.lunchtool.parser.Restaurant;
 
 /**
  * Created by qtomsza on 10/22/15.

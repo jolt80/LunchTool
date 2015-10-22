@@ -10,22 +10,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ListView;
 import android.widget.TextView;
 
+import lunchtool.lunchtool.parser.HtmlParser;
 import lunchtool.lunchtool.parser.Parser;
 import lunchtool.lunchtool.parser.Restaurant;
-import lunchtool.lunchtool.parser.TestParser;
+import lunchtool.lunchtool.test.TestParser;
 
 public class MainActivity extends AppCompatActivity {
 
-    final static Parser parser = new TestParser();
+    static private Parser parser;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -56,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
+
+        // Product code parser
+        //parser = new HtmlParser(mViewPager);
+
+        // Test parser
+        parser = new TestParser();
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
