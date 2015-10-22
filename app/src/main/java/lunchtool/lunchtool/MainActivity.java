@@ -167,9 +167,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            final Restaurant restaurant = MainActivity.parser.getRestaurants().get(getArguments().getInt(ARG_RESTAURANT_ID));
-
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            int index = getArguments().getInt(ARG_RESTAURANT_ID);
+
+            if(index >= MainActivity.parser.getRestaurants().size()) {
+                return rootView;
+            }
+
+            final Restaurant restaurant = MainActivity.parser.getRestaurants().get(index);
+
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(restaurant.getName() + '\n');
 
