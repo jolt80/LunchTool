@@ -2,12 +2,13 @@ package lunchtool.lunchtool.parser;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by qtomsza on 10/22/15.
  */
 public class Menu {
-    private HashSet<Meal> meals = new HashSet<>();
+    private TreeSet<Meal> meals = new TreeSet<Meal>();
 
     public Set<Meal> getMeals()
     {
@@ -25,6 +26,7 @@ public class Menu {
 
         for( final Meal meal : meals) {
             sb.append(meal.toString());
+            sb.append('\n');
         }
         return sb.toString();
     }

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ListView;
 import android.widget.TextView;
 
 import lunchtool.lunchtool.parser.Parser;
@@ -149,9 +150,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            final Restaurant restaurant = MainActivity.parser.getRestaurants().get(getArguments().getInt(ARG_RESTAURANT_ID));
+
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(MainActivity.parser.getRestaurants().get(getArguments().getInt(ARG_RESTAURANT_ID)).getName());
+            textView.setText(restaurant.getName());
+
+            TextView menuList = (TextView) rootView.findViewById(R.id.menu_list);
+            menuList.setText(restaurant.getMenu().toString());
+
             return rootView;
         }
     }
