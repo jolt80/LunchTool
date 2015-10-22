@@ -15,4 +15,10 @@ public class Meal {
     {
         return name;
     }
+
+    @Override
+    public final String toString() {
+        return getName();
+    }
+
 }

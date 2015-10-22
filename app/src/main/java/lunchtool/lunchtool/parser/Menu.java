@@ -18,4 +18,14 @@ public class Menu {
     {
         meals.add(meal);
     }
+
+    @Override
+    public final String toString() {
+        StringBuffer sb = new StringBuffer();
+
+        for( final Meal meal : meals) {
+            sb.append(meal.toString());
+        }
+        return sb.toString();
+    }
 }
