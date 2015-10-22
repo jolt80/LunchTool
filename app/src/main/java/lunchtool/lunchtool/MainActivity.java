@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(restaurant.getName());
+            textView.setText(restaurant.getName() + '\n');
 
             TextView menuList = (TextView) rootView.findViewById(R.id.menu_list);
             menuList.setText(restaurant.getMenu().toString());

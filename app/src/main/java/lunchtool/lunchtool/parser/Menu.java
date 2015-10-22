@@ -26,7 +26,7 @@ public class Menu {
 
         for( final Meal meal : meals) {
             sb.append(meal.toString());
-            sb.append('\n');
+            sb.append("\n\n");
         }
         return sb.toString();
     }
