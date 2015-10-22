@@ -7,7 +7,7 @@ import java.util.Set;
  * Created by qtomsza on 10/22/15.
  */
 public class Menu {
-    private HashSet<Meal> meals;
+    private HashSet<Meal> meals = new HashSet<>();
 
     public Set<Meal> getMeals()
     {

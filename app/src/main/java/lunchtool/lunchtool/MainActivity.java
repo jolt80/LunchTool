@@ -18,7 +18,13 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import lunchtool.lunchtool.parser.Parser;
+import lunchtool.lunchtool.parser.Restaurant;
+import lunchtool.lunchtool.parser.TestParser;
+
 public class MainActivity extends AppCompatActivity {
+
+    final static Parser parser = new TestParser();
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -49,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -99,53 +105,45 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            // Return a RestaurantFragment (defined as a static inner class below).
+            return RestaurantFragment.newInstance(position);
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            return parser.getRestaurants().size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "SECTION 1";
-                case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
-            }
-            return null;
+            return parser.getRestaurants().get(position).getName();
         }
     }
 
     /**
-     * A placeholder fragment containing a simple view.
+     * A fragment containing a view of a Restaurant object.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class RestaurantFragment extends Fragment {
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
+        private static final String ARG_RESTAURANT_ID = "restaurant_id";
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static RestaurantFragment newInstance(int restaurantId) {
+            RestaurantFragment fragment = new RestaurantFragment();
             Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            args.putInt(ARG_RESTAURANT_ID, restaurantId);
             fragment.setArguments(args);
             return fragment;
         }
 
-        public PlaceholderFragment() {
+        public RestaurantFragment() {
         }
 
         @Override
@@ -153,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            textView.setText(MainActivity.parser.getRestaurants().get(getArguments().getInt(ARG_RESTAURANT_ID)).getName());
             return rootView;
         }
     }
