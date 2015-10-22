@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import lunchtool.lunchtool.parser.HtmlParser;
 import lunchtool.lunchtool.parser.Parser;
 import lunchtool.lunchtool.parser.Restaurant;
 import lunchtool.lunchtool.ranker.MealReaderWriter;
