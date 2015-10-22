@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
 
         // Product code parser
-        //parser = new HtmlParser(mViewPager);
+        parser = new HtmlParser(mViewPager);
 
         // Test parser
-        parser = new TestParser();
+        //parser = new TestParser();
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
