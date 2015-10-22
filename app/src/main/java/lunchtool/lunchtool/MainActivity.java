@@ -19,9 +19,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import lunchtool.lunchtool.parser.HtmlParser;
 import lunchtool.lunchtool.parser.Parser;
 import lunchtool.lunchtool.parser.Restaurant;
+import lunchtool.lunchtool.ranker.MealReaderWriter;
+import lunchtool.lunchtool.ranker.SavedMealUpdater;
 import lunchtool.lunchtool.test.TestParser;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,13 +71,20 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                restaurantSelected();
+                Snackbar.make(view, "Good for you", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-
     }
 
+    private void restaurantSelected() {
+        int currentItem = mViewPager.getCurrentItem();
+        Restaurant selectedRestaurant = parser.getRestaurants().get(currentItem);
+        SavedMealUpdater mealUpdater = new SavedMealUpdater(selectedRestaurant,
+                                                            new MealReaderWriter(this));
+        mealUpdater.update();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
