@@ -90,8 +90,11 @@ public class HtmlParser extends HtmlBackgroundGetter implements Parser {
             {
                 menu.addMeal(new Meal(mealElement.text()));
             }
-            Restaurant restaurant = new Restaurant(name,menu);
-            restaurants.add(restaurant);
+
+            if (!(menu.isEmpty() || name.equals("Coor"))) {
+                Restaurant restaurant = new Restaurant(name, menu);
+                restaurants.add(restaurant);
+            }
         }
     }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import lunchtool.lunchtool.parser.Restaurant;
+import lunchtool.lunchtool.ranker.RestaurantSelector;
 
 /**
  * A fragment containing a view of a Restaurant object.
@@ -38,24 +39,34 @@ public class RestaurantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        int index = getArguments().getInt(ARG_RESTAURANT_ID);
-        View rootView = getCorrectView(index, inflater, container);
-
-        if(index >= MainActivity.parser.getRestaurants().size()) {
-            return rootView;
+        if(MainActivity.parser.getRestaurants().size() == 0) {
+            return inflater.inflate(R.layout.fragment_suggestion, container, false);
         }
-
-        final Restaurant restaurant = MainActivity.parser.getRestaurants().get(index);
-        setTextContent(rootView, restaurant);
-        return rootView;
+        int index = getArguments().getInt(ARG_RESTAURANT_ID);
+        return getCorrectView(index, inflater, container);
     }
 
     private View getCorrectView(int index, LayoutInflater inflater, ViewGroup container) {
         if (index == 0) {
-            return inflater.inflate(R.layout.fragment_suggestion, container, false);
+            return getSuggestionView(inflater, container);
         } else {
-            return inflater.inflate(R.layout.fragment_main, container, false);
+            return getNormalRestaurant(index, inflater, container);
         }
+    }
+
+    private View getSuggestionView(LayoutInflater inflater, ViewGroup container) {
+        View rootView = inflater.inflate(R.layout.fragment_suggestion, container, false);
+        RestaurantSelector selector = new RestaurantSelector(MainActivity.parser.getRestaurants());
+        Restaurant restaurant = selector.select();
+        setTextContent(rootView, restaurant);
+        return rootView;
+    }
+
+    private View getNormalRestaurant(int index, LayoutInflater inflater, ViewGroup container) {
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        Restaurant restaurant = MainActivity.parser.getRestaurants().get(index - 1);
+        setTextContent(rootView, restaurant);
+        return rootView;
     }
 
     private void setTextContent(View rootView, Restaurant restaurant) {

@@ -10,25 +10,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
 
 import lunchtool.lunchtool.parser.HtmlParser;
 import lunchtool.lunchtool.parser.Parser;
 import lunchtool.lunchtool.parser.Restaurant;
 import lunchtool.lunchtool.ranker.MealReaderWriter;
 import lunchtool.lunchtool.ranker.SavedMealUpdater;
-import lunchtool.lunchtool.test.TestParser;
 
 public class MainActivity extends AppCompatActivity {
 
-    static private Parser parser;
+    static public Parser parser;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -135,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return parser.getRestaurants().size();
+            return parser.getRestaurants().size() + 1;
         }
 
         @Override
@@ -144,51 +138,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * A fragment containing a view of a Restaurant object.
-     */
-    public static class RestaurantFragment extends Fragment {
-
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_RESTAURANT_ID = "restaurant_id";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static RestaurantFragment newInstance(int restaurantId) {
-            RestaurantFragment fragment = new RestaurantFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_RESTAURANT_ID, restaurantId);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public RestaurantFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            int index = getArguments().getInt(ARG_RESTAURANT_ID);
-
-            if(index >= MainActivity.parser.getRestaurants().size()) {
-                return rootView;
-            }
-
-            final Restaurant restaurant = MainActivity.parser.getRestaurants().get(index);
-
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(restaurant.getName());
-
-            TextView menuList = (TextView) rootView.findViewById(R.id.menu_list);
-            menuList.setText(restaurant.getMenu().toString());
-
-            return rootView;
-        }
-    }
 }

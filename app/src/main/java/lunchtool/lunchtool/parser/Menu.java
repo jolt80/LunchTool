@@ -32,4 +32,8 @@ public class Menu {
         }
         return sb.toString();
     }
+
+    public boolean isEmpty() {
+        return meals.isEmpty();
+    }
 }
