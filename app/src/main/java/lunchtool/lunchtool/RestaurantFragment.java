@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import lunchtool.lunchtool.parser.Restaurant;
+import lunchtool.lunchtool.ranker.HashSelector;
+import lunchtool.lunchtool.ranker.RandomSelector;
 import lunchtool.lunchtool.ranker.RestaurantSelector;
 
 /**
@@ -56,7 +58,7 @@ public class RestaurantFragment extends Fragment {
 
     private View getSuggestionView(LayoutInflater inflater, ViewGroup container) {
         View rootView = inflater.inflate(R.layout.fragment_suggestion, container, false);
-        RestaurantSelector selector = new RestaurantSelector(MainActivity.parser.getRestaurants());
+        RestaurantSelector selector = new HashSelector(MainActivity.parser.getRestaurants());
         Restaurant restaurant = selector.select();
         setTextContent(rootView, restaurant);
         return rootView;
