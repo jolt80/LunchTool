@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             final Restaurant restaurant = MainActivity.parser.getRestaurants().get(index);
 
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(restaurant.getName() + '\n');
+            textView.setText(restaurant.getName());
 
             TextView menuList = (TextView) rootView.findViewById(R.id.menu_list);
             menuList.setText(restaurant.getMenu().toString());
