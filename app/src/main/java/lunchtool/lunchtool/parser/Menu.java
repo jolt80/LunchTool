@@ -1,6 +1,8 @@
 package lunchtool.lunchtool.parser;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -8,9 +10,9 @@ import java.util.TreeSet;
  * Created by qtomsza on 10/22/15.
  */
 public class Menu {
-    private TreeSet<Meal> meals = new TreeSet<Meal>();
+    private ArrayList<Meal> meals = new ArrayList<Meal>();
 
-    public Set<Meal> getMeals()
+    public List<Meal> getMeals()
     {
         return meals;
     }

@@ -1,8 +1,8 @@
 package lunchtool.lunchtool.ranker;
 
-import java.io.Serializable;
+        import java.io.Serializable;
 
-import lunchtool.lunchtool.parser.Meal;
+        import lunchtool.lunchtool.parser.Meal;
 
 public class KeyMeal implements Serializable{
     private Meal meal;

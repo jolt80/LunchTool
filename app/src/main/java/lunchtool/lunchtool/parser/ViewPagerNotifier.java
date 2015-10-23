@@ -1,6 +1,6 @@
 package lunchtool.lunchtool.parser;
 
-import android.support.v4.view.ViewPager;
+        import android.support.v4.view.ViewPager;
 
 /**
  * Created by qtomsza on 10/22/15.

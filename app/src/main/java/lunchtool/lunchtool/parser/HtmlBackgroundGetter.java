@@ -19,12 +19,9 @@ import java.net.URL;
  */
 public class HtmlBackgroundGetter extends AsyncTask<String, String, String> {
 
-    private StringBuilder result;
     private Exception exception;
 
-    HtmlBackgroundGetter(StringBuilder resultIn)
-    {
-        result = resultIn;
+    HtmlBackgroundGetter() {
     }
 
     @Override
@@ -48,11 +45,5 @@ public class HtmlBackgroundGetter extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String resultIn) {
-        result.append(resultIn);
-    }
-
-    public final String getResult()
-    {
-        return result.toString();
     }
 }

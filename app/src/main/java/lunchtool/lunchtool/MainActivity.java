@@ -79,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        parser.checkIfUpdateNeeded();
+    }
+
     private void restaurantSelected() {
         int currentItem = mViewPager.getCurrentItem();
         Restaurant selectedRestaurant = parser.getRestaurants().get(currentItem);

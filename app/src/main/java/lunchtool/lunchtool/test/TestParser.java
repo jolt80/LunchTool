@@ -53,4 +53,8 @@ public class TestParser implements Parser {
     public List<Restaurant> getRestaurants() {
         return testRestaurants;
     }
+
+    @Override
+    public void checkIfUpdateNeeded() {
+    }
 }
