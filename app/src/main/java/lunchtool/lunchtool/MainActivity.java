@@ -127,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
             return RestaurantFragment.newInstance(position);
         }
 
+        public int getItemPosition(Object object){
+            return POSITION_NONE;
+        }
+
         @Override
         public int getCount() {
             return parser.getRestaurants().size() + 1;

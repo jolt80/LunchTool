@@ -40,7 +40,7 @@ public class RestaurantFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if(MainActivity.parser.getRestaurants().size() == 0) {
-            return inflater.inflate(R.layout.fragment_suggestion, container, false);
+            return inflater.inflate(R.layout.fragment_loading, container, false);
         }
         int index = getArguments().getInt(ARG_RESTAURANT_ID);
         return getCorrectView(index, inflater, container);
