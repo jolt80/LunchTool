@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         parser.checkIfUpdateNeeded();
+        mViewPager.getAdapter().notifyDataSetChanged();
     }
 
     private void restaurantSelected() {

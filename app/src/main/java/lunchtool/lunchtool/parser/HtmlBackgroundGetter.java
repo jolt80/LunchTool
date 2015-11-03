@@ -21,7 +21,10 @@ public class HtmlBackgroundGetter extends AsyncTask<String, String, String> {
 
     private Exception exception;
 
-    HtmlBackgroundGetter() {
+    HtmlParser parser;
+
+    HtmlBackgroundGetter(HtmlParser parserIn) {
+        parser = parserIn;
     }
 
     @Override
@@ -45,5 +48,6 @@ public class HtmlBackgroundGetter extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String resultIn) {
+        parser.parse(resultIn);
     }
 }

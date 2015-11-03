@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import lunchtool.lunchtool.parser.Restaurant;
 import lunchtool.lunchtool.ranker.HashSelector;
-import lunchtool.lunchtool.ranker.RandomSelector;
 import lunchtool.lunchtool.ranker.RestaurantSelector;
 
 /**

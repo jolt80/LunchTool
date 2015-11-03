@@ -8,4 +8,5 @@ import java.util.List;
 public interface Parser {
     public List<Restaurant> getRestaurants();
     public void checkIfUpdateNeeded();
+    public void parse(String page);
 }

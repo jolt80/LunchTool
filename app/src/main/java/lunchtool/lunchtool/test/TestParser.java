@@ -57,4 +57,9 @@ public class TestParser implements Parser {
     @Override
     public void checkIfUpdateNeeded() {
     }
+
+    @Override
+    public void parse(String page) {
+
+    }
 }
