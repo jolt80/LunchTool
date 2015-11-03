@@ -57,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
         // Product code parser
         parser = new HtmlParser(mViewPager);
 
-        // Test parser
-        //parser = new TestParser();
-
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
